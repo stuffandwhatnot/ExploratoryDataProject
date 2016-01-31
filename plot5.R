@@ -27,4 +27,3 @@ FinalGraph <- ggplot(graphdata) + aes(x = factor(year), y = Emissions, group = 1
 print(FinalGraph)
 dev.off()
 
-dev.off()
