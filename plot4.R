@@ -20,7 +20,7 @@ AggregateCoal <- (Combustion & Coal)
 CombustionSCC <- SCC[Combustion,]$SCC
 CombustionNEI <- NEI[NEI$SCC %in% CombustionSCC,]
 
-##Create a bar graph showing change in coal 
+##Create a line graph showing change in coal 
 png(filename = "plot4.png", width = 480, height = 480) 
 graphdata <- ddply(CombustionNEI, .(year), numcolwise(sum))
 FinalGraph <- ggplot(graphdata) + aes(x = factor(year), y = Emissions, group = 1) + geom_line() + labs(x="Year", y="Total PM2.5") + labs(title="PM2.5 Coal Source Emissions")
