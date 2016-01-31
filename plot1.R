@@ -9,7 +9,26 @@
 ## Upload the PNG file on the Assignment submission page
 ## Copy and paste the R code from the corresponding R file into the text box at the appropriate point in the peer assessment.
 
-Question 1
+## Question 1
 
-Have total emissions from PM2.5 decreased in the United States from 1999 to 2008? Using the base plotting system, make a plot 
-showing the total PM2.5 emission from all sources for each of the years 1999, 2002, 2005, and 2008.
+## Have total emissions from PM2.5 decreased in the United States from 1999 to 2008? Using the base plotting system, make a plot 
+## showing the total PM2.5 emission from all sources for each of the years 1999, 2002, 2005, and 2008.
+
+##PM2.5 Emissions Data (summarySCC_PM25.rds): This file contains a data 
+##frame with all of the PM2.5 emissions data for 1999, 2002, 2005, and 2008.
+##For each year, the table contains number of tons of PM2.5 emitted from a 
+##specific type of source for the entire year. 
+
+
+## This first line will likely take a few seconds. Be patient!
+NEI <- readRDS("summarySCC_PM25.rds")
+SCC <- readRDS("Source_Classification_Code.rds")
+##ran these, it did take a while! 
+
+##Plot 1 
+AggregateYearlyData <- aggregate(Emissions ~ year, data = NEI, FUN = sum)
+
+##Create a bar plot, looks better than just line plot for this
+png(filename = "Plot1.png", width = 480, height = 480)
+barplot(AggregateYearlyData$Emissions, names.arg = AggregateYearlyData$year, col = "red", xlab = "Year", ylab = "PM2.5 Emissions", main = "PM2.5 in aggregate by year")
+dev.off()
