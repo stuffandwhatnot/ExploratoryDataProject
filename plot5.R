@@ -20,7 +20,7 @@ VehicleNEI <- NEI[NEI$SCC %in% VehicleSCC,]
 
 BaltimoreVehiclesNEI <- (VehicleNEI[VehicleNEI$fips == "24510",])
 
-##Create a line graph showing change in coal 
+##Create a line graph showing change in vehicles  
 png(filename = "plot5.png", width = 480, height = 480) 
 graphdata <- ddply(BaltimoreVehiclesNEI, .(year), numcolwise(sum))
 FinalGraph <- ggplot(graphdata) + aes(x = factor(year), y = Emissions, group = 1) + geom_line() + labs(x="Year", y="Total PM2.5") + labs(title="PM2.5 Vehicle Source Emissions")
